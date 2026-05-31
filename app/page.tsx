@@ -262,8 +262,8 @@ const challengeBadge =
         </div>
       </nav>
 
-      {/* HERO */}
-      <section
+    {/* HERO */}
+<section
   className="relative py-32 text-center overflow-hidden"
   style={{
     backgroundImage: "url('/sushi - hero.jpeg')",
@@ -271,28 +271,44 @@ const challengeBadge =
     backgroundPosition: "center",
   }}
 >
-<div className="absolute inset-0 bg-black/70"></div>
+  <div className="relative z-10 text-white">
 
-<div className="relative z-10 text-white"></div>
+    <div className="flex justify-center gap-3 mb-6">
+      <button
+        onClick={() => setLang("nl")}
+        className="px-4 py-2 bg-white text-black border rounded-full"
+      >
+        NL
+      </button>
 
-        <div className="flex justify-center gap-3 mb-6">
-          <button onClick={() => setLang("nl")} className="px-4 py-2 bg-white border rounded-full">NL</button>
-          <button onClick={() => setLang("en")} className="px-4 py-2 bg-white border rounded-full">EN</button>
-        </div>
+      <button
+        onClick={() => setLang("en")}
+        className="px-4 py-2 bg-white text-black border rounded-full"
+      >
+        EN
+      </button>
+    </div>
 
-        <h1
-  className="text-5xl md:text-7xl font-black whitespace-pre-line text-white"
-  style={{
-    textShadow: "0 4px 20px rgba(0,0,0,0.8)",
-  }}
->
-  {t[lang].hero.title}
-</h1>
+    <h1
+      className="text-5xl md:text-7xl font-black whitespace-pre-line"
+      style={{
+        textShadow: "0 4px 20px rgba(0,0,0,0.8)",
+      }}
+    >
+      {t[lang].hero.title}
+    </h1>
 
-<p className="mt-6 text-white max-w-xl mx-auto">
-  {t[lang].hero.subtitle}
-</p>
-      </section>
+    <p
+      className="mt-6 max-w-xl mx-auto"
+      style={{
+        textShadow: "0 2px 10px rgba(0,0,0,0.8)",
+      }}
+    >
+      {t[lang].hero.subtitle}
+    </p>
+
+  </div>
+</section>
 
 {/* RESERVATION */}
 <section id="reservation" className="max-w-6xl mx-auto px-6 py-20">
