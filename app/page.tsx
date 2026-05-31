@@ -967,21 +967,21 @@ const challengeBadge =
       : "Changing an Unhealthy Habit"}
   </h2>
 
-  <div className="bg-white rounded-2xl shadow p-8">
+  <div className="bg-white rounded-2xl shadow p-8 text-center">
 
     {!habitTransformation ? (
       <>
-        <div className="text-center space-y-4 text-xl">
-          <div> Stress</div>
-          <div> </div>
-          <div> Chocolate</div>
-          <div> </div>
-          <div> Relief</div>
+        <div className="space-y-4 text-xl font-medium">
+          <div>Stress</div>
+          <div>↓</div>
+          <div>Chocolate</div>
+          <div>↓</div>
+          <div>Relief</div>
         </div>
 
         <button
           onClick={() => setHabitTransformation(true)}
-          className="mt-8 bg-green-700 text-white px-6 py-3 rounded-xl"
+          className="mt-8 bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-xl transition"
         >
           {lang === "nl"
             ? "Routine Vervangen"
@@ -989,15 +989,26 @@ const challengeBadge =
         </button>
       </>
     ) : (
-      <div className="text-center space-y-4 text-xl">
-        <div> Stress</div>
-        <div> </div>
-        <div> {lang === "nl" ? "Wandeling" : "Walk"}</div>
-        <div> </div>
-        <div> {lang === "nl" ? "Gezonde Snack" : "Healthy Snack"}</div>
-        <div> </div>
-        <div> Relief</div>
-      </div>
+      <>
+        <div className="space-y-4 text-xl font-medium">
+          <div>Stress</div>
+          <div>↓</div>
+          <div>{lang === "nl" ? "Wandeling" : "Walk"}</div>
+          <div>↓</div>
+          <div>{lang === "nl" ? "Gezonde Snack" : "Healthy Snack"}</div>
+          <div>↓</div>
+          <div>Relief</div>
+        </div>
+
+        <button
+          onClick={() => setHabitTransformation(false)}
+          className="mt-8 bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-xl transition"
+        >
+          {lang === "nl"
+            ? "Opnieuw Bekijken"
+            : "View Original"}
+        </button>
+      </>
     )}
 
   </div>
