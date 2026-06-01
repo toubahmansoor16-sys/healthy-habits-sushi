@@ -980,10 +980,7 @@ const challengeBadge =
         </div>
 
         <button
-          onClick={() => {
-  alert("Button clicked");
-  setHabitTransformation(true);
-}}
+          onClick={() => setHabitTransformation(true)}
           className="mt-8 bg-green-700 hover:bg-green-800 text-white px-6 py-3 rounded-xl transition"
         >
           {lang === "nl"
