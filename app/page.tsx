@@ -624,21 +624,54 @@ const challengeBadge =
     <div className="p-5">
       <h3 className="font-bold text-lg">
         {lang === "nl"
-          ? "Futomaki Zalm & Avocado"
-          : "Futomaki Salmon & Avocado"}
+          ? "Phildelphia Classic"
+          : "Phildelphia Classic"}
       </h3>
 
-      <p className="text-gray-600 mt-2">
-        {lang === "nl"
-          ? "Verse zalm gecombineerd met romige avocado."
-          : "Fresh salmon combined with creamy avocado."}
-      </p>
     </div>
   </div>
 
   <div className="bg-white rounded-2xl shadow overflow-hidden">
     <Image
-      src="/sushi gallery - 1.jpeg"
+      src="/photo_3.jpg"
+      alt="Sushi"
+      width={600}
+      height={400}
+      className="w-full h-56 object-cover"
+    />
+
+    <div className="p-5">
+      <h3 className="font-bold text-lg">
+        {lang === "nl"
+          ? "Hosomaki Zalm"
+          : "Hosomaki Salmon"}
+      </h3>
+
+    </div>
+  </div>
+
+  <div className="bg-white rounded-2xl shadow overflow-hidden">
+    <Image
+      src="/photo_4.jpg"
+      alt="Sushi"
+      width={600}
+      height={400}
+      className="w-full h-56 object-cover"
+    />
+
+    <div className="p-5">
+      <h3 className="font-bold text-lg">
+        {lang === "nl"
+          ? "Futomaki Zalm + Avocado"
+          : "Futomaki Salmon + Avocado"}
+      </h3>
+
+    </div>
+  </div>
+
+  <div className="bg-white rounded-2xl shadow overflow-hidden">
+    <Image
+      src="/photo_1.jpg"
       alt="Sushi Platter"
       width={600}
       height={400}
@@ -647,20 +680,15 @@ const challengeBadge =
 
     <div className="p-5">
       <h3 className="font-bold text-lg">
-        California Classic
+        Hosomaki Komkommer(vegan) / Hosomaki Cucumber(vegan)
       </h3>
 
-      <p className="text-gray-600 mt-2">
-        {lang === "nl"
-          ? "Populaire sushi met surimi, komkommer en avocado."
-          : "Popular sushi with surimi, cucumber and avocado."}
-      </p>
     </div>
   </div>
 
   <div className="bg-white rounded-2xl shadow overflow-hidden">
     <Image
-      src="/sushi gallery - 2.jpeg"
+      src="/photo_2.jpg"
       alt="Vegetarian Sushi"
       width={600}
       height={400}
@@ -670,15 +698,29 @@ const challengeBadge =
     <div className="p-5">
       <h3 className="font-bold text-lg">
         {lang === "nl"
-          ? "Philadelphia Vegetarisch"
-          : "Philadelphia Vegetarian"}
+          ? "California Classic"
+          : "California Classic"}
       </h3>
 
-      <p className="text-gray-600 mt-2">
+    </div>
+  </div>
+ 
+  <div className="bg-white rounded-2xl shadow overflow-hidden">
+    <Image
+      src="/photo_5.jpg"
+      alt="Vegetarian Sushi"
+      width={600}
+      height={400}
+      className="w-full h-56 object-cover"
+    />
+
+    <div className="p-5">
+      <h3 className="font-bold text-lg">
         {lang === "nl"
-          ? "Roomkaas, avocado en komkommer zonder vis."
-          : "Cream cheese, avocado and cucumber without fish."}
-      </p>
+          ? "California vegetarisch"
+          : "California Vegetarian"}
+      </h3>
+
     </div>
   </div>
 
