@@ -15,7 +15,7 @@ const [surveyMessage, setSurveyMessage] = useState("");
 const [orderName, setOrderName] = useState("");
 const [orderEmail, setOrderEmail] = useState("");
 const [orderQuantity, setOrderQuantity] = useState("");
-const [tableNumber, setTableNumber] = useState("");
+const [TableNumber, setTableNumber] = useState("");
 
 const [dietaryPreference, setDietaryPreference] = useState("");
 const [allergies, setAllergies] = useState("");
@@ -53,7 +53,7 @@ const totalPrice =
   order.philadelphiaVeg * 3 +
   order.hosomakiCucumber * 2; 
 
-  const handleReservationSubmit = async () => {
+  const handleorderSubmit = async () => {
   const orderSummary = `
 Futomaki: ${order.futomaki}
 California: ${order.california}
@@ -74,7 +74,8 @@ Hosomaki Cucumber: ${order.hosomakiCucumber}
         allergies: allergies,
         order_item: orderSummary,
         total_price: totalPrice,
-        Table Number: Table Number,
+        table_number: TableNumber,
+        special_requests: specialRequests,
       },
     ]);
 
@@ -349,13 +350,6 @@ const challengeBadge =
       onChange={(e) => setOrderQuantity(e.target.value)}
     />
 
-    <input
-      className="w-full p-3 border rounded"
-      placeholder={lang === "nl" ? "Tafelnummer" : "Table Number"}
-      value={tableNumber}
-      onChange={(e) => setTableNumber(e.target.value)}
-    />
-
     {/* CLASSIC MENU */}
 
     <div>
@@ -597,7 +591,7 @@ const challengeBadge =
     />
 
     <button
-  onClick={handleReservationSubmit}
+  onClick={handleorderSubmit}
   className="w-full bg-green-700 text-white p-4 rounded-xl font-bold"
   type="button"
 >
