@@ -10,11 +10,12 @@ const [habitChoice, setHabitChoice] = useState<string | null>(null);
 const [openSection, setOpenSection] = useState<string | null>(null);
 const [habitTransformation, setHabitTransformation] = useState(false);
 const [progress, setProgress] = useState<string[]>([]);
-const [reservationMessage, setReservationMessage] = useState("");
+const [orderMessage, setOrderMessage] = useState("");
 const [surveyMessage, setSurveyMessage] = useState("");
-const [reservationName, setReservationName] = useState("");
-const [reservationEmail, setReservationEmail] = useState("");
-const [reservationQuantity, setReservationQuantity] = useState("");
+const [orderName, setOrderName] = useState("");
+const [orderEmail, setOrderEmail] = useState("");
+const [orderQuantity, setOrderQuantity] = useState("");
+const [tableNumber, setTableNumber] = useState("");
 
 const [dietaryPreference, setDietaryPreference] = useState("");
 const [allergies, setAllergies] = useState("");
@@ -63,31 +64,31 @@ Hosomaki Cucumber: ${order.hosomakiCucumber}
 `;
 
   const { error } = await supabase
-    .from("reservations")
+    .from("orders")
     .insert([
       {
-        name: reservationName,
-        email: reservationEmail,
-        quantity: reservationQuantity,
+        name: orderName,
+        email: orderEmail,
+        quantity: orderQuantity,
         meal_type: dietaryPreference,
         allergies: allergies,
         order_item: orderSummary,
         total_price: totalPrice,
-        special_requests: specialRequests,
+        Table Number: Table Number,
       },
     ]);
 
   if (error) {
-  console.error(error);
+    console.error(error);
 
-  setReservationMessage(
+  setOrderMessage(
     `${error.message}`
   );
   } else {
-    setReservationMessage(
+    setOrderMessage(
       lang === "nl"
-        ? "Reservatie succesvol opgeslagen!"
-        : "Reservation saved successfully!"
+        ? "Bestelling succesvol opgeslagen!"
+        : "Order saved successfully!"
     );
   }
 };
@@ -135,7 +136,7 @@ const challengeBadge =
         psychology: "Psychologie",
         loop: "Gewoontecyclus",
         survey: "Enquête",
-        reservation: "Reservatie",
+        order: "Bestelling",
       },
 
       hero: {
@@ -150,7 +151,7 @@ const challengeBadge =
         psychology: "De Psychologie van Gezond Eten",
         loop: "De Gewoontecyclus",
         survey: "Enquête",
-        reservation: "Reservatie",
+        order: "Bestelling",
       },
 
       habitTriggers: {
@@ -177,7 +178,7 @@ const challengeBadge =
 
       surveySelected: "Geselecteerd:",
 
-      reservationTitle: "Reservatie",
+      orderTitle: "Bestelling",
       submit: "Verzenden",
 
       name: "Naam",
@@ -192,7 +193,7 @@ const challengeBadge =
         psychology: "Psychology",
         loop: "Habit Loop",
         survey: "Survey",
-        reservation: "Reservation",
+        order: "Order",
       },
 
       hero: {
@@ -234,7 +235,7 @@ const challengeBadge =
 
       surveySelected: "Selected:",
 
-      reservationTitle: "Reservation",
+      orderTitle: "Order",
       submit: "Submit",
 
       name: "Name",
@@ -257,7 +258,7 @@ const challengeBadge =
             <a href="#psychology">{t[lang].nav.psychology}</a>
             <a href="#loop">{t[lang].nav.loop}</a>
             <a href="#survey">{t[lang].nav.survey}</a>
-            <a href="#reservation">{t[lang].nav.reservation}</a>
+            <a href="#order">{t[lang].nav.order}</a>
           </div>
         </div>
       </nav>
@@ -310,11 +311,11 @@ const challengeBadge =
   </div>
 </section>
 
-{/* RESERVATION */}
-<section id="reservation" className="max-w-6xl mx-auto px-6 py-20">
+{/* ORDER */}
+<section id="order" className="max-w-6xl mx-auto px-6 py-20">
 
   <h2 className="text-4xl font-black mb-4">
-    {lang === "nl" ? "Reservatie" : "Reservation"}
+    {lang === "nl" ? "Bestelling" : "Order"}
   </h2>
 
   <p className="text-gray-600 mb-10">
@@ -330,22 +331,29 @@ const challengeBadge =
     <input
       className="w-full p-3 border rounded"
       placeholder={lang === "nl" ? "Naam" : "Name"}
-      value={reservationName}
-      onChange={(e) => setReservationName(e.target.value)}
+      value={orderName}
+      onChange={(e) => setOrderName(e.target.value)}
     />
 
     <input
       className="w-full p-3 border rounded"
       placeholder={lang === "nl" ? "E-mail" : "Email"}
-      value={reservationEmail}
-      onChange={(e) => setReservationEmail(e.target.value)}
+      value={orderEmail}
+      onChange={(e) => setOrderEmail(e.target.value)}
     />
 
     <input
       className="w-full p-3 border rounded"
       placeholder={lang === "nl" ? "Aantal Personen" : "Number of People"}
-      value={reservationQuantity}
-      onChange={(e) => setReservationQuantity(e.target.value)}
+      value={orderQuantity}
+      onChange={(e) => setOrderQuantity(e.target.value)}
+    />
+
+    <input
+      className="w-full p-3 border rounded"
+      placeholder={lang === "nl" ? "Tafelnummer" : "Table Number"}
+      value={tableNumber}
+      onChange={(e) => setTableNumber(e.target.value)}
     />
 
     {/* CLASSIC MENU */}
@@ -593,9 +601,9 @@ const challengeBadge =
   className="w-full bg-green-700 text-white p-4 rounded-xl font-bold"
   type="button"
 >
-  {reservationMessage && (
+  {orderMessage && (
   <div className="mt-4 p-4 bg-green-100 rounded-xl">
-    {reservationMessage}
+    {orderMessage}
   </div>
 )}
       {lang === "nl"
