@@ -92,27 +92,29 @@ Hosomaki Cucumber: ${order.hosomakiCucumber}
 };
 
 const handleSurveySubmit = async (response: string) => {
+  const finalResponse =
+    response === "other"
+      ? otherTrigger
+      : response;
+
   const { error } = await supabase
     .from("survey_responses")
     .insert([
       {
-        response,
+        response: finalResponse,
         language: lang,
       },
     ]);
 
-  if (error) {
-    setSurveyMessage(error.message);
-  } else {
-    setSurveyChoice(response);
-
+  if (!error) {
     setSurveyMessage(
       lang === "nl"
-        ? "Bedankt voor uw antwoord!"
+        ? "Bedankt voor je antwoord!"
         : "Thank you for your response!"
     );
   }
 };
+
   const challengePercent = Math.round(
   (progress.length / 7) * 100
 );
@@ -1355,17 +1357,16 @@ const challengeBadge =
 {surveyChoice === "other" && (
   <input
     type="text"
+    value={otherTrigger}
+    onChange={(e) => setOtherTrigger(e.target.value)}
     placeholder={
       lang === "nl"
         ? "Beschrijf jouw situatie..."
         : "Describe your situation..."
     }
-    value={otherTrigger}
-    onChange={(e) => setOtherTrigger(e.target.value)}
-    className="mt-4 w-full p-4 border rounded-xl"
+    className="w-full p-3 border rounded-xl mt-4"
   />
 )}
-
 {surveyMessage && (
   <div className="mt-4 p-4 bg-green-100 rounded-xl">
     {surveyMessage}
