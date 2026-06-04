@@ -1344,15 +1344,20 @@ const challengeBadge =
             {Object.entries(t[lang].surveyOptions).map(([key, label]) => (
               <button
                 key={key}
-                onClick={() => handleSurveySubmit(key)}
-                className={`w-full p-4 rounded-xl border text-left ${
-                  surveyChoice === key ? "bg-green-200" : "bg-white"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+                onClick={() => {
+                  setSurveyChoice(key);
+
+      if (key !== "other") {
+        handleSurveySubmit(key);
+      }
+    }}
+    className={`w-full p-4 rounded-xl border text-left ${
+      surveyChoice === key ? "bg-green-200" : "bg-white"
+    }`}
+  >
+    {label}
+  </button>
+))}
 
 {surveyChoice === "other" && (
   <input
@@ -1378,7 +1383,7 @@ const challengeBadge =
               {t[lang].surveyOptions[surveyChoice as keyof typeof t["en"]["surveyOptions"]]}
             </div>
           )}
-
+          </div>
         </div>
       </section>
 
