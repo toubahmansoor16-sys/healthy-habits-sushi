@@ -13,7 +13,6 @@ const [progress, setProgress] = useState<string[]>([]);
 const [orderMessage, setOrderMessage] = useState("");
 const [surveyMessage, setSurveyMessage] = useState("");
 const [orderName, setOrderName] = useState("");
-const [orderEmail, setOrderEmail] = useState("");
 const [orderQuantity, setOrderQuantity] = useState("");
 
 const [tablenumber, setTablenumber] = useState("");
@@ -67,7 +66,6 @@ Hosomaki Cucumber: ${order.hosomakiCucumber}
     .insert([
       {
         name: orderName,
-        email: orderEmail,
         quantity: orderQuantity,
         table_number: tablenumber,
         allergies: allergies,
@@ -238,7 +236,6 @@ const challengeBadge =
       submit: "Submit",
 
       name: "Name",
-      email: "Email",
       quantity: "Quantity",
     },
   };
@@ -332,13 +329,6 @@ const challengeBadge =
       placeholder={lang === "nl" ? "Naam" : "Name"}
       value={orderName}
       onChange={(e) => setOrderName(e.target.value)}
-    />
-
-    <input
-      className="w-full p-3 border rounded"
-      placeholder={lang === "nl" ? "E-mail" : "Email"}
-      value={orderEmail}
-      onChange={(e) => setOrderEmail(e.target.value)}
     />
 
     <input
