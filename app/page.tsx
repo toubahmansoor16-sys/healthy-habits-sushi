@@ -18,6 +18,7 @@ const [orderQuantity, setOrderQuantity] = useState("");
 const [tablenumber, setTablenumber] = useState("");
 const [allergies, setAllergies] = useState("");
 const [specialRequests, setSpecialRequests] = useState("");
+const [otherTrigger, setOtherTrigger] = useState("");
 
 const [order, setOrder] = useState({
   futomaki: 0,
@@ -165,13 +166,14 @@ const challengeBadge =
         social: "Sociaal → groepsinvloed op eten.",
       },
 
-      surveyQuestion: "Wat triggert ongezond eten het meest?",
-      surveyOptions: {
-        stress: "Stress",
-        boredom: "Verveling",
-        studying: "Studeren",
-        social: "Sociale situaties",
-      },
+      surveyQuestion: "Wat triggert bij jou het meest ongezond eten?",
+    surveyOptions: {
+  stress: "Stress",
+  boredom: "Verveling",
+  studying: "Studeren",
+  social: "Sociale situaties",
+  other: "Anders...",
+},
 
       surveySelected: "Geselecteerd:",
 
@@ -1349,6 +1351,21 @@ const challengeBadge =
               </button>
             ))}
           </div>
+
+{surveyChoice === "other" && (
+  <input
+    type="text"
+    placeholder={
+      lang === "nl"
+        ? "Beschrijf jouw situatie..."
+        : "Describe your situation..."
+    }
+    value={otherTrigger}
+    onChange={(e) => setOtherTrigger(e.target.value)}
+    className="mt-4 w-full p-4 border rounded-xl"
+  />
+)}
+
 {surveyMessage && (
   <div className="mt-4 p-4 bg-green-100 rounded-xl">
     {surveyMessage}
