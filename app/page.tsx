@@ -319,8 +319,8 @@ const challengeBadge =
 
   <p className="text-gray-600 mb-10">
     {lang === "nl"
-      ? "Reserveer je tafel en stel je sushi bestelling samen."
-      : "Reserve your table and build your sushi order."}
+      ? "Plaats je sushi bestelling."
+      : "Make your sushi order."}
   </p>
 
   <div className="bg-white rounded-2xl shadow p-6 space-y-6">
