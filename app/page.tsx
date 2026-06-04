@@ -15,9 +15,8 @@ const [surveyMessage, setSurveyMessage] = useState("");
 const [orderName, setOrderName] = useState("");
 const [orderEmail, setOrderEmail] = useState("");
 const [orderQuantity, setOrderQuantity] = useState("");
-const [TableNumber, setTableNumber] = useState("");
 
-const [dietaryPreference, setDietaryPreference] = useState("");
+const [tablenumber, setTablenumber] = useState("");
 const [allergies, setAllergies] = useState("");
 const [specialRequests, setSpecialRequests] = useState("");
 
@@ -70,11 +69,10 @@ Hosomaki Cucumber: ${order.hosomakiCucumber}
         name: orderName,
         email: orderEmail,
         quantity: orderQuantity,
-        meal_type: dietaryPreference,
+        table_number: tablenumber,
         allergies: allergies,
         order_item: orderSummary,
         total_price: totalPrice,
-        table_number: TableNumber,
         special_requests: specialRequests,
       },
     ]);
@@ -513,8 +511,8 @@ const challengeBadge =
 
       <select
         className="w-full p-3 border rounded"
-        value={dietaryPreference}
-        onChange={(e) => setDietaryPreference(e.target.value)}
+        value={tablenumber}
+        onChange={(e) => setTablenumber(e.target.value)}
       >
         <option value="">
           {lang === "nl"
@@ -522,21 +520,96 @@ const challengeBadge =
             : "Select"}
         </option>
 
-        <option value="vegetarian">
+        <option value="Table 1">
           {lang === "nl"
-            ? "Vegetarisch"
-            : "Vegetarian"}
+            ? "Tafel 1"
+            : "Table 1"}
         </option>
 
-        <option value="vegan">
-          Vegan
+        <option value="Table 2">
+          {lang === "nl"
+            ? "Tafel 2"
+            : "Table 2"}
         </option>
 
-        <option value="fish">
+        <option value="Table 3">
           {lang === "nl"
-            ? "Vis"
-            : "Fish"}
+            ? "Tafel 3"
+            : "Table 3"}
         </option>
+
+        <option value="Table 4">
+          {lang === "nl"
+            ? "Tafel 4"
+            : "Table 4"}
+        </option>
+
+  <option value="Table 5">
+          {lang === "nl"
+            ? "Tafel 5"
+            : "Table 5"}
+        </option>
+
+  <option value="Table 6">
+          {lang === "nl"
+            ? "Tafel 6"
+            : "Table 6"}
+        </option>
+
+  <option value="Table 7">
+          {lang === "nl"
+            ? "Tafel 7"
+            : "Table 7"}
+        </option>
+
+  <option value="Table 8">
+          {lang === "nl"
+            ? "Tafel 8"
+            : "Table 8"}
+        </option>
+
+  <option value="Table 9">
+          {lang === "nl"
+            ? "Tafel 9"
+            : "Table 9"}
+        </option>
+
+  <option value="Table 10">
+          {lang === "nl"
+            ? "Tafel 10"
+            : "Table 10"}
+        </option>
+
+  <option value="Table 11">
+          {lang === "nl"
+            ? "Tafel 11"
+            : "Table 11"}
+        </option>
+
+  <option value="Table 12">
+          {lang === "nl"
+            ? "Tafel 12"
+            : "Table 12"}
+        </option>
+
+  <option value="Table 13">
+          {lang === "nl"
+            ? "Tafel 13"
+            : "Table 13"}
+        </option>
+
+  <option value="Table 14">
+          {lang === "nl"
+            ? "Tafel 14"
+            : "Table 14"}
+        </option>
+
+  <option value="Table 15">
+          {lang === "nl"
+            ? "Tafel 15"
+            : "Table 15"}
+        </option>
+
       </select>
     </div>
 
