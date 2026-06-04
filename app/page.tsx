@@ -437,11 +437,11 @@ const challengeBadge =
 
         {[
           {
-            key: "californiaVeg",
+            key: "philadelphiaVeg",
             name:
               lang === "nl"
-                ? "California Vegetarisch"
-                : "California Vegetarian",
+                ? "Philadelphia Vegetarisch"
+                : "Philadelphia Vegetarian",
             price: 3,
           },
           {
@@ -500,13 +500,10 @@ const challengeBadge =
       </h3>
     </div>
 
-    {/* DIETARY PREFERENCE */}
-
-    <div>
+    {/* TABLE NUMBER */}
+  <div>
       <label className="block font-semibold mb-2">
-        {lang === "nl"
-          ? "Dieetvoorkeur"
-          : "Dietary Preference"}
+        {lang === "nl" ? "Tafelnummer" : "Table Number"}
       </label>
 
       <select
