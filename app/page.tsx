@@ -200,9 +200,11 @@ const challengeBadge =
         onClick={() => setLang("nl")}
         className="px-4 py-2 bg-white text-black border rounded-full"
       >
-        NL
-      </button>
+      
     </div>
+
+    <h1 className="text-5xl font-black mb-6">
+    </h1>
   </div>
 </section>
 
