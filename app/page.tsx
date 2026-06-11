@@ -193,7 +193,7 @@ const challengeBadge =
 <section
   className="relative min-h-[70vh] overflow-hidden"
   style={{
-    backgroundImage: "url('/HabitLoop.jpeg')",
+    backgroundImage: "url('/Habit+Loop.jpeg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
