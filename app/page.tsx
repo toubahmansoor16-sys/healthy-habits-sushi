@@ -707,19 +707,6 @@ const challengeBadge =
         </div>
       </section>
 
-      {/* LOOP */}
-      <section id="loop" className="bg-white text-black py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-black mb-10">{t[lang].sections.loop}</h2>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-blue-10 p-6 rounded-xl">Cue</div>
-            <div className="bg-blue-10 p-6 rounded-xl">Routine</div>
-            <div className="bg-blue-10 p-6 rounded-xl">Reward</div>
-          </div>
-        </div>
-      </section>
-
       {/* SURVEY */}
       <section id="survey" className="bg-gray-100 py-20">
         <div className="max-w-4xl mx-auto px-6">
