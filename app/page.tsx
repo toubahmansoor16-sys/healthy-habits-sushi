@@ -175,7 +175,7 @@ const challengeBadge =
     <button
       onClick={() => setLang("nl")}
       className={`px-4 py-2 border rounded-full ${
-        lang === "nl" ? "bg-blue-700 text-white" : "bg-white"
+        lang === "nl" ? "bg-blue-100 text-white" : "bg-white"
       }`}
     >
       NL
@@ -184,7 +184,7 @@ const challengeBadge =
     <button
       onClick={() => setLang("en")}
       className={`px-4 py-2 border rounded-full ${
-        lang === "en" ? "bg-blue-700 text-white" : "bg-white"
+        lang === "en" ? "bg-blue-100 text-white" : "bg-white"
       }`}
     >
       EN
@@ -269,7 +269,7 @@ const challengeBadge =
         onClick={() => setHabitChoice("studying")}
         className="bg-blue-50 p-5 rounded-xl"
       >
-        🍟 {lang === "nl"
+         {lang === "nl"
           ? "Chips tijdens studeren"
           : "Chips while studying"}
       </button>
@@ -278,7 +278,7 @@ const challengeBadge =
         onClick={() => setHabitChoice("lunch")}
         className="bg-blue-50 p-5 rounded-xl"
       >
-        🥤 {lang === "nl"
+         {lang === "nl"
           ? "Frisdrank tijdens lunch"
           : "Soda at lunch"}
       </button>
@@ -287,7 +287,7 @@ const challengeBadge =
         onClick={() => setHabitChoice("sport")}
         className="bg-blue-50 p-5 rounded-xl"
       >
-        🍎 {lang === "nl"
+         {lang === "nl"
           ? "Fruit na sporten"
           : "Fruit after exercise"}
       </button>
@@ -318,21 +318,18 @@ const challengeBadge =
     <div className="grid md:grid-cols-3 gap-6 text-center">
 
       <div className="bg-blue-100 p-8 rounded-xl">
-        🧠
         <h3 className="font-bold mt-3">
           {lang === "nl" ? "Brein" : "Brain"}
         </h3>
       </div>
 
       <div className="bg-blue-100 p-8 rounded-xl">
-        🔁
         <h3 className="font-bold mt-3">
           {lang === "nl" ? "Herhaling" : "Repetition"}
         </h3>
       </div>
 
       <div className="bg-blue-100 p-8 rounded-xl">
-        ✅
         <h3 className="font-bold mt-3">
           {lang === "nl" ? "Gewoonte" : "Habit"}
         </h3>
@@ -454,9 +451,9 @@ const challengeBadge =
       </h3>
 
       <ul className="space-y-3">
-        <li>✅ {lang === "nl" ? "Fruit zichtbaar leggen" : "Keep fruit visible"}</li>
-        <li>✅ {lang === "nl" ? "Gezonde snacks voorbereiden" : "Prepare healthy snacks"}</li>
-        <li>✅ {lang === "nl" ? "Eerst water drinken" : "Drink water first"}</li>
+        <li>{lang === "nl" ? "Fruit zichtbaar leggen" : "Keep fruit visible"}</li>
+        <li>{lang === "nl" ? "Gezonde snacks voorbereiden" : "Prepare healthy snacks"}</li>
+        <li>{lang === "nl" ? "Eerst water drinken" : "Drink water first"}</li>
       </ul>
     </div>
 
@@ -560,7 +557,7 @@ const challengeBadge =
 
         {/* CHALLENGE CENTER */}
 
-<div className="mb-10 p-6 bg-green-50 rounded-2xl">
+<div className="mb-10 p-6 bg-blue-50 rounded-2xl">
 
   <h3 className="text-2xl font-bold mb-4">
     {lang === "nl"
@@ -622,7 +619,7 @@ const challengeBadge =
             : "bg-white"
         }`}
       >
-        {progress.includes(task.id) ? "✅ " : "⬜ "}
+        {progress.includes(task.id) ? "✔️ " : "⬜ "}
         {lang === "nl" ? task.nl : task.en}
       </button>
     ))}
@@ -714,7 +711,7 @@ const challengeBadge =
       </section>
 
       {/* LOOP */}
-      <section id="loop" className="bg--900 text-white py-20">
+      <section id="loop" className="bg-blue-900 text-white py-20">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-black mb-10">{t[lang].sections.loop}</h2>
 
@@ -727,7 +724,7 @@ const challengeBadge =
       </section>
 
       {/* SURVEY */}
-      <section id="survey" className="bg-orange-50 py-20">
+      <section id="survey" className="bg-gray-100 py-20">
         <div className="max-w-4xl mx-auto px-6">
 
           <h2 className="text-4xl font-black mb-10">
