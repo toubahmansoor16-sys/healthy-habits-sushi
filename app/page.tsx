@@ -69,9 +69,6 @@ const challengeBadge =
       },
 
       hero: {
-        title: "Gezonde gewoontes.",
-        subtitle:
-          "Leer hoe psychologie, gedrag en voeding samen gezonde keuzes vormen.",
       },
 
       sections: {
@@ -711,7 +708,7 @@ const challengeBadge =
       </section>
 
       {/* LOOP */}
-      <section id="loop" className="bg-blue-900 text-white py-20">
+      <section id="loop" className="bg-blue-300 text-white py-20">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-black mb-10">{t[lang].sections.loop}</h2>
 
@@ -745,7 +742,7 @@ const challengeBadge =
       }
     }}
     className={`w-full p-4 rounded-xl border text-left ${
-      surveyChoice === key ? "bg-green-200" : "bg-white"
+      surveyChoice === key ? "bg-blue-200" : "bg-white"
     }`}
   >
     {label}
@@ -766,12 +763,12 @@ const challengeBadge =
   />
 )}
 {surveyMessage && (
-  <div className="mt-4 p-4 bg-green-100 rounded-xl">
+  <div className="mt-4 p-4 bg-blue-100 rounded-xl">
     {surveyMessage}
   </div>
 )}
           {surveyChoice && (
-            <div className="mt-6 p-4 bg-green-100 rounded-xl">
+            <div className="mt-6 p-4 bg-blue-100 rounded-xl">
               {t[lang].surveySelected}{" "}
               {t[lang].surveyOptions[surveyChoice as keyof typeof t["en"]["surveyOptions"]]}
             </div>
