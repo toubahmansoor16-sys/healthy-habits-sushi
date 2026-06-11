@@ -191,13 +191,15 @@ const challengeBadge =
 
     {/* HERO */}
 <section
-  className="relative py-32 text-center overflow-hidden"
+  className="relative min-h-[70vh] overflow-hidden"
   style={{
-    backgroundImage: "url('/Habit+Loop.jpeg')",
+    backgroundImage: "url('/HabitLoop.jpeg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
   }}
 >
+  <div className="absolute inset-0 bg-black/10"></div>
 </section>
 
 {/* ABOUT */}
