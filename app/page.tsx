@@ -193,7 +193,7 @@ const challengeBadge =
 <section
   className="relative py-32 text-center overflow-hidden"
   style={{
-    backgroundImage: "url('/Habit+Loop.png')",
+    backgroundImage: "url('/Habit+Loop.jpeg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
   }}
@@ -765,7 +765,7 @@ const challengeBadge =
       </section>
 
       <footer className="text-center py-10 text-gray-500">
-        © 2026 Healthy Habits Sushi
+        © 2026 Healthy Habits. All rights reserved.
       </footer>
 
     </main>
