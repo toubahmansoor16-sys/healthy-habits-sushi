@@ -68,9 +68,6 @@ const challengeBadge =
         survey: "Enquête",
       },
 
-      hero: {
-      },
-
       sections: {
         habits: "Gewoontes",
         psychology: "De Psychologie van Gezond Eten",
@@ -188,19 +185,6 @@ const challengeBadge =
     </button>
   </div>
 </div>
-
-    {/* HERO */}
-<section
-  className="relative min-h-[70vh] overflow-hidden"
-  style={{
-    backgroundImage: "url('/Habit+Loop.jpeg')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-  }}
->
-  <div className="absolute inset-0 bg-black/10"></div>
-</section>
 
 {/* ABOUT */}
 <section className="max-w-6xl mx-auto px-6 py-20">
