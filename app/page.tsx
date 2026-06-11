@@ -10,24 +10,9 @@ const [habitChoice, setHabitChoice] = useState<string | null>(null);
 const [openSection, setOpenSection] = useState<string | null>(null);
 const [habitTransformation, setHabitTransformation] = useState(false);
 const [progress, setProgress] = useState<string[]>([]);
-const [orderMessage, setOrderMessage] = useState("");
 const [surveyMessage, setSurveyMessage] = useState("");
-const [orderName, setOrderName] = useState("");
-const [orderQuantity, setOrderQuantity] = useState("");
-
-const [tablenumber, setTablenumber] = useState("");
-const [allergies, setAllergies] = useState("");
-const [specialRequests, setSpecialRequests] = useState("");
 const [otherTrigger, setOtherTrigger] = useState("");
 
-const [order, setOrder] = useState({
-  futomaki: 0,
-  california: 0,
-  hosomakiSalmon: 0,
-  philadelphiaClassic: 0,
-  philadelphiaVeg: 0,
-  hosomakiCucumber: 0,
-});
 
 const toggleProgress = (item: string) => {
   setProgress((prev) =>
@@ -35,60 +20,6 @@ const toggleProgress = (item: string) => {
       ? prev.filter((i) => i !== item)
       : [...prev, item]
   );
-};
-
-const updateItem = (item: keyof typeof order, change: number) => {
-  setOrder((prev) => ({
-    ...prev,
-    [item]: Math.max(0, prev[item] + change),
-  }));
-};
-
-const totalPrice =
-  order.futomaki * 4 +
-  order.california * 5 +
-  order.hosomakiSalmon * 4 +
-  order.philadelphiaClassic * 6 +
-  order.philadelphiaVeg * 3 +
-  order.hosomakiCucumber * 2; 
-
-  const handleorderSubmit = async () => {
-  const orderSummary = `
-Futomaki: ${order.futomaki}
-California: ${order.california}
-Hosomaki Salmon: ${order.hosomakiSalmon}
-Philadelphia Classic: ${order.philadelphiaClassic}
-Philadelphia Vegetarian: ${order.philadelphiaVeg}
-Hosomaki Cucumber: ${order.hosomakiCucumber}
-`;
-
-  const { error } = await supabase
-    .from("orders")
-    .insert([
-      {
-        name: orderName,
-        quantity: orderQuantity,
-        table_number: tablenumber,
-        allergies: allergies,
-        order_item: orderSummary,
-        total_price: totalPrice,
-        special_requests: specialRequests,
-      },
-    ]);
-
-  if (error) {
-    console.error(error);
-
-  setOrderMessage(
-    `${error.message}`
-  );
-  } else {
-    setOrderMessage(
-      lang === "nl"
-        ? "Bestelling succesvol opgeslagen!"
-        : "Order saved successfully!"
-    );
-  }
 };
 
 const handleSurveySubmit = async (response: string) => {
@@ -131,12 +62,10 @@ const challengeBadge =
   const t = {
     nl: {
       nav: {
-        gallery: "Galerij",
         habits: "Gewoontes",
         psychology: "Psychologie",
         loop: "Gewoontecyclus",
         survey: "Enquête",
-        order: "Bestelling",
       },
 
       hero: {
@@ -146,12 +75,10 @@ const challengeBadge =
       },
 
       sections: {
-        gallery: "Sushi Galerij",
-        habits: "Eetgewoontes",
+        habits: "Gewoontes",
         psychology: "De Psychologie van Gezond Eten",
         loop: "De Gewoontecyclus",
         survey: "Enquête",
-        order: "Bestelling",
       },
 
       habitTriggers: {
@@ -179,9 +106,6 @@ const challengeBadge =
 
       surveySelected: "Geselecteerd:",
 
-      orderTitle: "Bestelling",
-      submit: "Verzenden",
-
       name: "Naam",
       email: "E-mail",
       quantity: "Aantal",
@@ -189,12 +113,10 @@ const challengeBadge =
 
     en: {
       nav: {
-        gallery: "Gallery",
         habits: "Habits",
         psychology: "Psychology",
         loop: "Habit Loop",
         survey: "Survey",
-        order: "Order",
       },
 
       hero: {
@@ -204,12 +126,10 @@ const challengeBadge =
       },
 
       sections: {
-        gallery: "Sushi Gallery",
-        habits: "Eating Habits",
+        habits: "Habits",
         psychology: "The Psychology of Healthy Eating",
         loop: "Habit Loop",
         survey: "Survey",
-        reservation: "Reservation",
       },
 
       habitTriggers: {
@@ -235,12 +155,6 @@ const challengeBadge =
       },
 
       surveySelected: "Selected:",
-
-      orderTitle: "Order",
-      submit: "Submit",
-
-      name: "Name",
-      quantity: "Quantity",
     },
   };
 
@@ -250,15 +164,13 @@ const challengeBadge =
       {/* NAV */}
       <nav className="sticky top-0 bg-white/90 backdrop-blur border-b z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between">
-          <h1 className="font-bold">🍣 Healthy Habits Sushi</h1>
+          <h1 className="font-bold">Healthy Habits </h1>
 
           <div className="flex gap-4 text-sm font-medium">
-            <a href="#gallery">{t[lang].nav.gallery}</a>
             <a href="#habits">{t[lang].nav.habits}</a>
             <a href="#psychology">{t[lang].nav.psychology}</a>
             <a href="#loop">{t[lang].nav.loop}</a>
             <a href="#survey">{t[lang].nav.survey}</a>
-            <a href="#order">{t[lang].nav.order}</a>
           </div>
         </div>
       </nav>
@@ -267,7 +179,7 @@ const challengeBadge =
 <section
   className="relative py-32 text-center overflow-hidden"
   style={{
-    backgroundImage: "url('/sushi - hero.jpeg')",
+    backgroundImage: "url('/Habit+Loop.png')",
     backgroundSize: "cover",
     backgroundPosition: "center",
   }}
@@ -311,512 +223,16 @@ const challengeBadge =
   </div>
 </section>
 
-{/* ORDER */}
-<section id="order" className="max-w-6xl mx-auto px-6 py-20">
-
-  <h2 className="text-4xl font-black mb-4">
-    {lang === "nl" ? "Bestelling" : "Order"}
-  </h2>
-
-  <p className="text-gray-600 mb-10">
-    {lang === "nl"
-      ? "Plaats je sushi bestelling."
-      : "Make your sushi order."}
-  </p>
-
-  <div className="bg-white rounded-2xl shadow p-6 space-y-6">
-
-    {/* CUSTOMER INFO */}
-
-    <input
-      className="w-full p-3 border rounded"
-      placeholder={lang === "nl" ? "Naam" : "Name"}
-      value={orderName}
-      onChange={(e) => setOrderName(e.target.value)}
-    />
-
-    <input
-      className="w-full p-3 border rounded"
-      placeholder={lang === "nl" ? "Aantal Personen" : "Number of People"}
-      value={orderQuantity}
-      onChange={(e) => setOrderQuantity(e.target.value)}
-    />
-
-    {/* CLASSIC MENU */}
-
-    <div>
-      <h3 className="text-2xl font-bold mb-4">
-        {lang === "nl" ? "Sushi Classic" : "Sushi Classic"}
-      </h3>
-
-      <div className="space-y-4">
-
-        {[
-          {
-            key: "futomaki",
-            name:
-              lang === "nl"
-                ? "Futomaki Zalm + Avocado"
-                : "Futomaki Salmon + Avocado",
-            price: 4,
-          },
-          {
-            key: "california",
-            name: "California Classic",
-            price: 5,
-          },
-          {
-            key: "hosomakiSalmon",
-            name:
-              lang === "nl"
-                ? "Hosomaki Zalm"
-                : "Hosomaki Salmon",
-            price: 4,
-          },
-          {
-            key: "philadelphiaClassic",
-            name: "Philadelphia Classic",
-            price: 6,
-          },
-        ].map((item) => (
-          <div
-            key={item.key}
-            className="flex justify-between items-center border rounded-xl p-4"
-          >
-            <div>
-              <h4 className="font-semibold">{item.name}</h4>
-              <p>€{item.price}</p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() =>
-                  updateItem(item.key as keyof typeof order, -1)
-                }
-                className="px-3 py-1 border rounded"
-              >
-                -
-              </button>
-
-              <span className="font-bold">
-                {order[item.key as keyof typeof order]}
-              </span>
-
-              <button
-                type="button"
-                onClick={() =>
-                  updateItem(item.key as keyof typeof order, 1)
-                }
-                className="px-3 py-1 border rounded"
-              >
-                +
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* VEGETARIAN MENU */}
-
-    <div>
-      <h3 className="text-2xl font-bold mb-4">
-        {lang === "nl"
-          ? "Sushi Vegetarisch"
-          : "Vegetarian Sushi"}
-      </h3>
-
-      <div className="space-y-4">
-
-        {[
-          {
-            key: "philadelphiaVeg",
-            name:
-              lang === "nl"
-                ? "Philadelphia Vegetarisch"
-                : "Philadelphia Vegetarian",
-            price: 3,
-          },
-          {
-            key: "hosomakiCucumber",
-            name:
-              lang === "nl"
-                ? "Hosomaki Komkommer"
-                : "Hosomaki Cucumber",
-            price: 2,
-          },
-        ].map((item) => (
-          <div
-            key={item.key}
-            className="flex justify-between items-center border rounded-xl p-4"
-          >
-            <div>
-              <h4 className="font-semibold">{item.name}</h4>
-              <p>€{item.price}</p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() =>
-                  updateItem(item.key as keyof typeof order, -1)
-                }
-                className="px-3 py-1 border rounded"
-              >
-                -
-              </button>
-
-              <span className="font-bold">
-                {order[item.key as keyof typeof order]}
-              </span>
-
-              <button
-                type="button"
-                onClick={() =>
-                  updateItem(item.key as keyof typeof order, 1)
-                }
-                className="px-3 py-1 border rounded"
-              >
-                +
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* TOTAL */}
-
-    <div className="bg-green-50 p-5 rounded-xl">
-      <h3 className="text-xl font-bold">
-        {lang === "nl" ? "Totaal" : "Total"}: €{totalPrice}
-      </h3>
-    </div>
-
-    {/* TABLE NUMBER */}
-  <div>
-      <label className="block font-semibold mb-2">
-        {lang === "nl" ? "Tafelnummer" : "Table Number"}
-      </label>
-
-      <select
-        className="w-full p-3 border rounded"
-        value={tablenumber}
-        onChange={(e) => setTablenumber(e.target.value)}
-      >
-        <option value="">
-          {lang === "nl"
-            ? "Selecteer"
-            : "Select"}
-        </option>
-
-        <option value="Table 1">
-          {lang === "nl"
-            ? "Tafel 1"
-            : "Table 1"}
-        </option>
-
-        <option value="Table 2">
-          {lang === "nl"
-            ? "Tafel 2"
-            : "Table 2"}
-        </option>
-
-        <option value="Table 3">
-          {lang === "nl"
-            ? "Tafel 3"
-            : "Table 3"}
-        </option>
-
-        <option value="Table 4">
-          {lang === "nl"
-            ? "Tafel 4"
-            : "Table 4"}
-        </option>
-
-  <option value="Table 5">
-          {lang === "nl"
-            ? "Tafel 5"
-            : "Table 5"}
-        </option>
-
-  <option value="Table 6">
-          {lang === "nl"
-            ? "Tafel 6"
-            : "Table 6"}
-        </option>
-
-  <option value="Table 7">
-          {lang === "nl"
-            ? "Tafel 7"
-            : "Table 7"}
-        </option>
-
-  <option value="Table 8">
-          {lang === "nl"
-            ? "Tafel 8"
-            : "Table 8"}
-        </option>
-
-  <option value="Table 9">
-          {lang === "nl"
-            ? "Tafel 9"
-            : "Table 9"}
-        </option>
-
-  <option value="Table 10">
-          {lang === "nl"
-            ? "Tafel 10"
-            : "Table 10"}
-        </option>
-
-  <option value="Table 11">
-          {lang === "nl"
-            ? "Tafel 11"
-            : "Table 11"}
-        </option>
-
-  <option value="Table 12">
-          {lang === "nl"
-            ? "Tafel 12"
-            : "Table 12"}
-        </option>
-
-  <option value="Table 13">
-          {lang === "nl"
-            ? "Tafel 13"
-            : "Table 13"}
-        </option>
-
-  <option value="Table 14">
-          {lang === "nl"
-            ? "Tafel 14"
-            : "Table 14"}
-        </option>
-
-  <option value="Table 15">
-          {lang === "nl"
-            ? "Tafel 15"
-            : "Table 15"}
-        </option>
-
-      </select>
-    </div>
-
-    {/* ALLERGIES */}
-
-    <div>
-      <label className="block font-semibold mb-2">
-        {lang === "nl"
-          ? "Allergieën"
-          : "Allergies"}
-      </label>
-
-      <select
-        className="w-full p-3 border rounded"
-        value={allergies}
-        onChange={(e) => setAllergies(e.target.value)}
-      >
-        <option value="">
-          {lang === "nl"
-            ? "Geen"
-            : "None"}
-        </option>
-
-        <option value="nuts">
-          {lang === "nl"
-            ? "Noten"
-            : "Nuts"}
-        </option>
-
-        <option value="gluten">
-          Gluten
-        </option>
-
-        <option value="lactose">
-          Lactose
-        </option>
-      </select>
-    </div>
-
-    {/* SPECIAL REQUESTS */}
-
-    <textarea
-      className="w-full p-3 border rounded"
-      rows={4}
-      placeholder={
-        lang === "nl"
-          ? "Speciale verzoeken"
-          : "Special requests"
-      }
-      value={specialRequests}
-      onChange={(e) => setSpecialRequests(e.target.value)}
-    />
-
-    <button
-  onClick={handleorderSubmit}
-  className="w-full bg-green-700 text-white p-4 rounded-xl font-bold"
-  type="button"
->
-  {orderMessage && (
-  <div className="mt-4 p-4 bg-green-100 rounded-xl">
-    {orderMessage}
-  </div>
-)}
-      {lang === "nl"
-        ? "Reserveer"
-        : "Reserve"}
-    </button>
-
-  </div>
-</section>
-
-      {/* GALLERY */}
-      <section id="gallery" className="max-w-6xl mx-auto px-6 py-20">
-        <h2 className="text-4xl font-black mb-10">{t[lang].sections.gallery}</h2>
-
-        <div className="grid md:grid-cols-3 gap-6">
-
-  <div className="bg-white rounded-2xl shadow overflow-hidden">
-    <Image
-      src="/sushi - hero.jpeg"
-      alt="Sushi"
-      width={600}
-      height={400}
-      className="w-full h-56 object-cover"
-    />
-
-    <div className="p-5">
-      <h3 className="font-bold text-lg">
-        {lang === "nl"
-          ? "Phildelphia Classic"
-          : "Phildelphia Classic"}
-      </h3>
-
-    </div>
-  </div>
-
-  <div className="bg-white rounded-2xl shadow overflow-hidden">
-    <Image
-      src="/photo_3.jpg"
-      alt="Sushi"
-      width={600}
-      height={400}
-      className="w-full h-56 object-cover"
-    />
-
-    <div className="p-5">
-      <h3 className="font-bold text-lg">
-        {lang === "nl"
-          ? "Hosomaki Zalm"
-          : "Hosomaki Salmon"}
-      </h3>
-
-    </div>
-  </div>
-
-  <div className="bg-white rounded-2xl shadow overflow-hidden">
-    <Image
-      src="/photo_4.jpg"
-      alt="Sushi"
-      width={600}
-      height={400}
-      className="w-full h-56 object-cover"
-    />
-
-    <div className="p-5">
-      <h3 className="font-bold text-lg">
-        {lang === "nl"
-          ? "Futomaki Zalm + Avocado"
-          : "Futomaki Salmon + Avocado"}
-      </h3>
-
-    </div>
-  </div>
-
-  <div className="bg-white rounded-2xl shadow overflow-hidden">
-    <Image
-      src="/photo_1.jpg"
-      alt="Sushi Platter"
-      width={600}
-      height={400}
-      className="w-full h-56 object-cover"
-    />
-
-    <div className="p-5">
-      <h3 className="font-bold text-lg">
-        {lang === "nl"
-          ? "Hosomaki Komkommer(vegan)"
-          : "Hosomaki Cucumber(vegan)"}
-      </h3>
-
-    </div>
-  </div>
-
-  <div className="bg-white rounded-2xl shadow overflow-hidden">
-    <Image
-      src="/photo_2.jpg"
-      alt="Vegetarian Sushi"
-      width={600}
-      height={400}
-      className="w-full h-56 object-cover"
-    />
-
-    <div className="p-5">
-      <h3 className="font-bold text-lg">
-        {lang === "nl"
-          ? "California Classic"
-          : "California Classic"}
-      </h3>
-
-    </div>
-  </div>
- 
-  <div className="bg-white rounded-2xl shadow overflow-hidden">
-    <Image
-      src="/photo_5.jpg"
-      alt="Vegetarian Sushi"
-      width={600}
-      height={400}
-      className="w-full h-56 object-cover"
-    />
-
-    <div className="p-5">
-      <h3 className="font-bold text-lg">
-        {lang === "nl"
-          ? "California vegetarisch"
-          : "California Vegetarian"}
-      </h3>
-
-    </div>
-  </div>
-
-</div>
-      </section>
-
  {/* ABOUT */}
 <section className="max-w-6xl mx-auto px-6 py-20">
 
   <h2 className="text-4xl font-black mb-10">
     {lang === "nl"
-      ? "Over Sushi & Gezond Eten"
-      : "About Sushi & Healthy Eating"}
+      ? "Over Gezond Eten"
+      : "About Healthy Eating"}
   </h2>
 
   <div className="grid md:grid-cols-3 gap-6">
-
-    <div className="bg-white rounded-2xl shadow p-6">
-      <h3 className="text-xl font-bold mb-3">
-        {lang === "nl" ? "Waarom Sushi?" : "Why Sushi?"}
-      </h3>
-
-      <p>
-        {lang === "nl"
-          ? "Sushi wordt in dit project gebruikt als voorbeeld van een gezonde en aantrekkelijke maaltijd. Veel soorten sushi bevatten verse ingrediënten zoals vis, avocado, komkommer en rijst."
-          : "Sushi is used in this project as an example of a healthy and appealing meal. Many sushi varieties contain fresh ingredients such as fish, avocado, cucumber and rice."}
-      </p>
-    </div>
 
     <div className="bg-white rounded-2xl shadow p-6">
       <h3 className="text-xl font-bold mb-3">
