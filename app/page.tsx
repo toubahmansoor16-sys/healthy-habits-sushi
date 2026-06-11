@@ -170,6 +170,28 @@ const challengeBadge =
         </div>
       </nav>
 
+      <div className="flex justify-end px-8 py-3 bg-white">
+  <div className="flex gap-3">
+    <button
+      onClick={() => setLang("nl")}
+      className={`px-4 py-2 border rounded-full ${
+        lang === "nl" ? "bg-green-700 text-white" : "bg-white"
+      }`}
+    >
+      NL
+    </button>
+
+    <button
+      onClick={() => setLang("en")}
+      className={`px-4 py-2 border rounded-full ${
+        lang === "en" ? "bg-green-700 text-white" : "bg-white"
+      }`}
+    >
+      EN
+    </button>
+  </div>
+</div>
+
     {/* HERO */}
 <section
   className="relative py-32 text-center overflow-hidden"
@@ -179,36 +201,21 @@ const challengeBadge =
     backgroundPosition: "center",
   }}
 >
-  <div className="relative z-10 text-white">
-
-    <div className="flex justify-center gap-3 mb-6">
-      <button
-        onClick={() => setLang("nl")}
-        className="px-4 py-2 bg-white text-black border rounded-full"
-      >
-        NL
-      </button>
-
-      <button
-        onClick={() => setLang("en")}
-        className="px-4 py-2 bg-white text-black border rounded-full"
-      >
-        EN
-      </button>
-
-      <button
-        onClick={() => setLang("nl")}
-        className="px-4 py-2 bg-white text-black border rounded-full"
-      >
-      
-    </div>
-
-    <h1 className="text-5xl font-black mb-6">
+  <div className="relative z-10 max-w-3xl mx-auto px-6">
+    <h1 className="text-5xl font-black text-white mb-6">
+      {lang === "nl"
+        ? "Gezonde gewoontes beginnen hier"
+        : "Healthy habits start here"}
     </h1>
+    <p className="text-lg text-white/80 max-w-2xl mx-auto">
+      {lang === "nl"
+        ? "Leer hoe je kleine veranderingen kunt vasthouden."
+        : "Learn how small changes become lasting habits."}
+    </p>
   </div>
 </section>
 
- {/* ABOUT */}
+{/* ABOUT */}
 <section className="max-w-6xl mx-auto px-6 py-20">
 
   <h2 className="text-4xl font-black mb-10">
