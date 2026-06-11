@@ -69,7 +69,7 @@ const challengeBadge =
       },
 
       hero: {
-        title: "Gezond eten.\nGezonde gewoontes.",
+        title: "Gezonde gewoontes.",
         subtitle:
           "Leer hoe psychologie, gedrag en voeding samen gezonde keuzes vormen.",
       },
@@ -119,11 +119,6 @@ const challengeBadge =
         survey: "Survey",
       },
 
-      hero: {
-        title: "Healthy Food.\nHealthy Habits.",
-        subtitle:
-          "Learn how psychology, behaviour and food create healthy choices.",
-      },
 
       sections: {
         habits: "Habits",
@@ -200,26 +195,12 @@ const challengeBadge =
       >
         EN
       </button>
+
+      <button
+        onClick={() => setLang("nl")}
+        className="px-4 py-2 bg-white text-black border rounded-full"
+      ></button>
     </div>
-
-    <h1
-      className="text-5xl md:text-7xl font-black whitespace-pre-line"
-      style={{
-        textShadow: "0 4px 20px rgba(0,0,0,0.8)",
-      }}
-    >
-      {t[lang].hero.title}
-    </h1>
-
-    <p
-      className="mt-6 max-w-xl mx-auto"
-      style={{
-        textShadow: "0 2px 10px rgba(0,0,0,0.8)",
-      }}
-    >
-      {t[lang].hero.subtitle}
-    </p>
-
   </div>
 </section>
 
