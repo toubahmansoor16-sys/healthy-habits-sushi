@@ -175,7 +175,7 @@ const challengeBadge =
     <button
       onClick={() => setLang("nl")}
       className={`px-4 py-2 border rounded-full ${
-        lang === "nl" ? "bg-green-700 text-white" : "bg-white"
+        lang === "nl" ? "bg-blue-700 text-white" : "bg-white"
       }`}
     >
       NL
@@ -184,7 +184,7 @@ const challengeBadge =
     <button
       onClick={() => setLang("en")}
       className={`px-4 py-2 border rounded-full ${
-        lang === "en" ? "bg-green-700 text-white" : "bg-white"
+        lang === "en" ? "bg-blue-700 text-white" : "bg-white"
       }`}
     >
       EN
@@ -201,18 +201,6 @@ const challengeBadge =
     backgroundPosition: "center",
   }}
 >
-  <div className="relative z-10 max-w-3xl mx-auto px-6">
-    <h1 className="text-5xl font-black text-white mb-6">
-      {lang === "nl"
-        ? "Gezonde gewoontes beginnen hier"
-        : "Healthy habits start here"}
-    </h1>
-    <p className="text-lg text-white/80 max-w-2xl mx-auto">
-      {lang === "nl"
-        ? "Leer hoe je kleine veranderingen kunt vasthouden."
-        : "Learn how small changes become lasting habits."}
-    </p>
-  </div>
 </section>
 
 {/* ABOUT */}
@@ -279,7 +267,7 @@ const challengeBadge =
 
       <button
         onClick={() => setHabitChoice("studying")}
-        className="bg-green-50 p-5 rounded-xl"
+        className="bg-blue-50 p-5 rounded-xl"
       >
         🍟 {lang === "nl"
           ? "Chips tijdens studeren"
@@ -288,7 +276,7 @@ const challengeBadge =
 
       <button
         onClick={() => setHabitChoice("lunch")}
-        className="bg-green-50 p-5 rounded-xl"
+        className="bg-blue-50 p-5 rounded-xl"
       >
         🥤 {lang === "nl"
           ? "Frisdrank tijdens lunch"
@@ -297,7 +285,7 @@ const challengeBadge =
 
       <button
         onClick={() => setHabitChoice("sport")}
-        className="bg-green-50 p-5 rounded-xl"
+        className="bg-blue-50 p-5 rounded-xl"
       >
         🍎 {lang === "nl"
           ? "Fruit na sporten"
@@ -329,21 +317,21 @@ const challengeBadge =
 
     <div className="grid md:grid-cols-3 gap-6 text-center">
 
-      <div className="bg-green-100 p-8 rounded-xl">
+      <div className="bg-blue-100 p-8 rounded-xl">
         🧠
         <h3 className="font-bold mt-3">
           {lang === "nl" ? "Brein" : "Brain"}
         </h3>
       </div>
 
-      <div className="bg-green-100 p-8 rounded-xl">
+      <div className="bg-blue-100 p-8 rounded-xl">
         🔁
         <h3 className="font-bold mt-3">
           {lang === "nl" ? "Herhaling" : "Repetition"}
         </h3>
       </div>
 
-      <div className="bg-green-100 p-8 rounded-xl">
+      <div className="bg-blue-100 p-8 rounded-xl">
         ✅
         <h3 className="font-bold mt-3">
           {lang === "nl" ? "Gewoonte" : "Habit"}
@@ -458,7 +446,7 @@ const challengeBadge =
       </ul>
     </div>
 
-    <div className="bg-green-50 p-8 rounded-2xl">
+    <div className="bg-blue-50 p-8 rounded-2xl">
       <h3 className="text-2xl font-bold mb-4">
         {lang === "nl"
           ? "Gezonde Omgeving"
@@ -553,7 +541,7 @@ const challengeBadge =
     ].map((item) => (
       <div
         key={item}
-        className="bg-green-100 rounded-xl p-5 text-center font-semibold"
+        className="bg-blue-100 rounded-xl p-5 text-center font-semibold"
       >
         {item}
       </div>
@@ -630,7 +618,7 @@ const challengeBadge =
         onClick={() => toggleProgress(task.id)}
         className={`p-4 rounded-xl border text-left ${
           progress.includes(task.id)
-            ? "bg-green-200"
+            ? "bg-blue-200"
             : "bg-white"
         }`}
       >
@@ -646,7 +634,7 @@ const challengeBadge =
     <div className="w-full bg-gray-200 rounded-full h-5 overflow-hidden">
 
       <div
-        className="bg-green-600 h-5"
+        className="bg-blue-600 h-5"
         style={{
           width: `${challengePercent}%`,
         }}
@@ -726,7 +714,7 @@ const challengeBadge =
       </section>
 
       {/* LOOP */}
-      <section id="loop" className="bg-green-900 text-white py-20">
+      <section id="loop" className="bg--900 text-white py-20">
         <div className="max-w-6xl mx-auto px-6">
           <h2 className="text-4xl font-black mb-10">{t[lang].sections.loop}</h2>
 
